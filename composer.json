@@ -1,0 +1,22 @@
+{
+    "name": "singlephon/corelink",
+    "description": "This project is a Laravel-based microservices architecture designed to allow easy communication between multiple applications through a centralized parent application. The parent application acts as a hub for communication between the child applications, allowing for efficient and streamlined data sharing across multiple services.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Singlephon\\Corelink\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rakhat Bakytzhanov",
+            "email": "singlephon@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*"
+    }
+}
