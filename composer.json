@@ -18,5 +18,11 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/bcorpj/CoreLink"
+        }
+    ]
 }
