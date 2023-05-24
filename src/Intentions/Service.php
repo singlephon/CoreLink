@@ -29,7 +29,7 @@ class Service
     public static function notify(string $resource, $model, bool $dynamic = true): array
     {
         $serviceable = static::getServiceableClass($resource);
-        return $notifyToService = ( new $serviceable($resource, $model, $dynamic) )->send();
+        return ( new $serviceable($resource, $model, $dynamic) )->send();
     }
 
 
@@ -51,7 +51,7 @@ class Service
     {
         $serviceable = static::getServiceableClass($model, 'create');
         $resource = self::getResourceClass($model);
-        return $produceToService = ( new $serviceable($resource, $model, $dynamic, $service) )->send();
+        return ( new $serviceable($resource, $model, $dynamic, $service) )->send();
     }
 
     /**
@@ -67,9 +67,9 @@ class Service
         $serviceable = static::getServiceableName($proxy);
         $action = Str::ucfirst($action);
         if (!$action)
-            return "App\\Source\\Service\\Services\\{$serviceable}Services";
+            return "App\\CoreLink\\Services\\{$serviceable}Services";
 
-        return "App\\Source\\Service\\Services\\{$action}\\{$serviceable}Services";
+        return "App\\CoreLink\\Services\\{$action}\\{$serviceable}Services";
     }
 
     /**
@@ -97,7 +97,7 @@ class Service
     public static function getResourceClass(Model $model): string
     {
         $serviceableName = static::getServiceableName($model);
-        return "App\\Source\\Service\\Resources\\{$serviceableName}ServiceResource";
+        return "App\\CoreLink\\Resources\\{$serviceableName}ServiceResource";
     }
 
     /**

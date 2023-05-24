@@ -31,10 +31,9 @@ abstract class Syncable
         $resourceName = Str::of($this->resource::class)->afterLast('\\')->before('Resource');
         $data = Http::withBody($this->resource->toJson(), 'application/json')
             ->withHeaders(['Resource' => (string) $resourceName])
-            ->post($fullRoute)
-            ->json();
+            ->post($fullRoute);
 
-        return [$this->service, $data];
+        return [$this->service, $data->json(), $data->status()];
     }
 
     protected function getUrl(?string $route): string

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\CoreLink\Sync;
+namespace {{ namespace }};
 
 use Singlephon\Corelink\Intentions\Syncable;
 
-class ServiceSyncable extends Syncable
+class {{ name }}Syncable extends Syncable
 {
     /**
      * @return array
@@ -12,8 +12,8 @@ class ServiceSyncable extends Syncable
     protected function routes(): array
     {
         return [
-            'create' => '/common/produce',
-            'notify' => '/common/notify'
+            'default' => '/common/default',
+            // ...
         ];
     }
 }

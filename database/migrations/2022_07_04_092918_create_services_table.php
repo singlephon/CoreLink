@@ -17,7 +17,6 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->string('data_model')->nullable();
             $table->double('version')->default(0.1);
             $table->string('key')->charset('utf8')->collation('utf8_bin')->default('undefined');
             $table->boolean('production')->nullable()->default(false);

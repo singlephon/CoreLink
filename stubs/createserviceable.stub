@@ -1,12 +1,12 @@
 <?php
 
-namespace App\CoreLink\Services;
+namespace {{ namespace }};
 
 use Singlephon\Corelink\Intentions\Serviceable;
 use App\Models\Service;
 use Illuminate\Support\Collection;
 
-class Services extends Serviceable
+class {{ name }}Services extends Serviceable
 {
     /**
      * Return path to services by model

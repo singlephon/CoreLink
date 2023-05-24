@@ -24,5 +24,12 @@
             "type": "vcs",
             "url": "https://github.com/bcorpj/CoreLink"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Singlephon\\CoreLinkServiceProvider"
+            ]
+        }
+    }
 }

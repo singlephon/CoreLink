@@ -22,9 +22,9 @@ abstract class Serviceable
     }
 
     /**
-     * Send data to children servers
+     * Send data to children services
      *
-     * Important!: Must realize queue in case false status
+     * Important!: Must realize queue if status is negative
      * @return array
      */
     public function send (): array
@@ -34,8 +34,8 @@ abstract class Serviceable
         {
             $resource = $this->dynamic ? Version::getResource($service, $this->resource) : $this->resource;
             if (class_exists($resource))
-                $res[] = (new ServiceSyncable($service, new $resource($this->model)
-                          ))->sync(Service::getActionType($this->extendedClassName()));
+                $res[] = (new ServiceSyncable($service, new $resource($this->model)))
+                            ->sync(Service::getActionType($this->extendedClassName()));
         }
         return $res;
     }
