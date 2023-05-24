@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Singlephon\\CoreLinkServiceProvider"
+                "Singlephon\\Corelink\\CoreLinkServiceProvider"
             ]
         }
     }
