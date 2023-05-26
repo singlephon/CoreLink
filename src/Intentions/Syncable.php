@@ -30,7 +30,9 @@ abstract class Syncable
         $fullRoute = $this->getUrl($route);
         $resourceName = Str::of($this->resource::class)->afterLast('\\')->before('Resource');
         $data = Http::withBody($this->resource->toJson(), 'application/json')
-            ->withHeaders(['Resource' => (string) $resourceName])
+            ->withHeaders([
+                'Resource' => (string) $resourceName
+            ])
             ->post($fullRoute);
 
         return [$this->service, $data->json(), $data->status()];
@@ -38,7 +40,7 @@ abstract class Syncable
 
     protected function getUrl(?string $route): string
     {
-        return $this->service->url . '/api' . $this->routes() [$route ?: 'notify'];
+        return $this->service->url . $this->routes() [$route ?: 'notify'];
     }
 
     abstract protected function routes (): array;

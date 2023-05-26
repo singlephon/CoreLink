@@ -3,11 +3,7 @@
 namespace Singlephon\Corelink;
 
 use Illuminate\Support\ServiceProvider;
-use Singlephon\Corelink\Commands\{
-    InitialStructure,
-    MakeCommand,
-    SyncCommand
-};
+use Singlephon\Corelink\Commands\{CreateServiceCommand, MakeCommand, SyncCommand, InitialStructure};
 
 class CoreLinkServiceProvider extends ServiceProvider
 {
@@ -16,7 +12,7 @@ class CoreLinkServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'corelink');
     }
 
     /**
@@ -24,15 +20,15 @@ class CoreLinkServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        include __DIR__ . '/Routes/default.php';
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->publishes([
-            __DIR__.'/../stubs' => base_path('stubs'),
-        ], 'stubs');
-        $this->publishes([
-            __DIR__.'/Models' => app_path('models'),
-        ], 'models');
-        $this->registerCommands();
+        $this->loadRoutesFrom(__DIR__.'/Routes/routes.php');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/Models' => app_path('models'),
+            ], 'models');
+            $this->registerCommands();
+        }
     }
 
     protected function registerCommands(): void
@@ -42,7 +38,8 @@ class CoreLinkServiceProvider extends ServiceProvider
         $this->commands([
             InitialStructure::class,
             MakeCommand::class,
-            SyncCommand::class
+            SyncCommand::class,
+            CreateServiceCommand::class
         ]);
     }
 }

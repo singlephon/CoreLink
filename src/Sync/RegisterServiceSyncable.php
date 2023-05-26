@@ -5,13 +5,13 @@ namespace Singlephon\Corelink\Sync;
 use Illuminate\Support\Facades\Http;
 use Singlephon\Corelink\Intentions\Syncable;
 
-class TokenSyncable extends Syncable
+class RegisterServiceSyncable extends Syncable
 {
 
     protected function routes(): array
     {
         return [
-            'default' => '/nodelink/token'
+            'default' => '/nodelink/register'
         ];
     }
 
@@ -19,10 +19,9 @@ class TokenSyncable extends Syncable
     {
         $fullRoute = $this->getUrl($route);
         $data = Http::withBody($this->resource->toJson(), 'application/json')
-            ->post($fullRoute)
-            ->json();
+            ->post($fullRoute);
 
-        return ['token' => $data['token']];
+        return $data->json();
     }
 
 

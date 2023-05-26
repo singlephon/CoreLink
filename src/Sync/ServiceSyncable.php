@@ -12,8 +12,8 @@ class ServiceSyncable extends Syncable
     protected function routes(): array
     {
         return [
-            'create' => '/common/produce',
-            'notify' => '/common/notify'
+            'create' => '/nodelink/produce',
+            'notify' => '/nodelink/notify'
         ];
     }
 }
