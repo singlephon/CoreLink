@@ -21,7 +21,7 @@ class RegisterServiceSyncable extends Syncable
         $data = Http::withBody($this->resource->toJson(), 'application/json')
             ->post($fullRoute);
 
-        return $data->json();
+        return ['data' => $data->json(), 'status' => $data->successful()];
     }
 
 

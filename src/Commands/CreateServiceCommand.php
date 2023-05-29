@@ -39,7 +39,24 @@ class CreateServiceCommand extends Command
 
         $registerKey = $this->checksumGenerate($url, $key);
         $registerService = new RegisterServiceSyncable($service, new RegisterServiceResource($service, $registerKey));
-        $this->info($registerService->sync('default')['sad']);
+        $query = $registerService->sync('default');
 
+        if (!$query['status']) {
+            $this->warn('Failed when register application');
+            return;
+        }
+
+        $service->name = $query['data']['name'];
+        $service->version = $query['data']['version'];
+        $service->production = true;
+
+        $isServiceExist = Service::query()->where('name', $service->name)->where('url', $service->url)->get();
+        /** TODO: Add app test version api */
+        if (count($isServiceExist)) {
+            $this->alert('Service <fg=white;options=bold>'. $service->name .'</> already exists');
+            return;
+        }
+        $service->save();
+        $this->info('...<fg=white;options=bold>' . $service->name . '</> successfully registered');
     }
 }
