@@ -2,6 +2,7 @@
 
 namespace {{ namespace }};
 
+use Illuminate\Support\Facades\Http;
 use Singlephon\Corelink\Intentions\Syncable;
 
 class {{ name }}Syncable extends Syncable
@@ -14,6 +15,17 @@ class {{ name }}Syncable extends Syncable
         return [
             'default' => '/common/default',
             // ...
+        ];
+    }
+
+    public function sync(?string $route): array
+    {
+        $fullRoute = $this->getUrl($route);
+        $data = Http::withBody($this->resource->toJson(), 'application/json')
+            ->post($fullRoute);
+
+        return [
+            //...
         ];
     }
 }

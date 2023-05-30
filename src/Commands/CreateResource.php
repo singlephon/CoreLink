@@ -4,7 +4,7 @@ namespace Singlephon\Corelink\Commands;
 
 class CreateResource extends StubMaker
 {
-    protected string $belongs = 'Resource';
+    protected string $belongs = 'ServiceResource';
 
     public function __construct($name)
     {

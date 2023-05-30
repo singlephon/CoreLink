@@ -10,13 +10,13 @@ use Illuminate\Support\Str;
 abstract class Syncable
 {
     protected Service $service;
-    protected JsonResource $resource;
+    protected ?JsonResource $resource;
 
     /**
      * @param Service $service
      * @param JsonResource $resource
      */
-    public function __construct(Service $service, JsonResource $resource)
+    public function __construct(Service $service, ?JsonResource $resource = null) // Second parameter optional from 0.1.2
     {
         $this->service = $service;
         $this->resource = $resource;

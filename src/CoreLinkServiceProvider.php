@@ -3,7 +3,11 @@
 namespace Singlephon\Corelink;
 
 use Illuminate\Support\ServiceProvider;
-use Singlephon\Corelink\Commands\{CreateServiceCommand, MakeCommand, SyncCommand, InitialStructure};
+use Singlephon\Corelink\Commands\{CreateServiceCommand,
+    MakeCommand,
+    SyncCommand,
+    InitialStructure,
+    TestNodeLinkApplications};
 
 class CoreLinkServiceProvider extends ServiceProvider
 {
@@ -39,7 +43,8 @@ class CoreLinkServiceProvider extends ServiceProvider
             InitialStructure::class,
             MakeCommand::class,
             SyncCommand::class,
-            CreateServiceCommand::class
+            CreateServiceCommand::class,
+            TestNodeLinkApplications::class
         ]);
     }
 }
