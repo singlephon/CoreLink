@@ -2,10 +2,9 @@
 
 namespace Singlephon\Corelink\Commands;
 
-use App\CoreLink\Sync\PingPongSyncable;
 use App\Models\Service;
 use Illuminate\Console\Command;
-use Singlephon\Corelink\Resources\TokenServiceResource;
+use Singlephon\Corelink\Sync\PingPongSyncable;
 use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class TestNodeLinkApplications extends Command
