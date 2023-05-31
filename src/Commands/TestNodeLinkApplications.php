@@ -38,10 +38,10 @@ class TestNodeLinkApplications extends Command
         /** TODO: Implement another Ping stuffs in Nodelink  */
 
         if ($options['primary'])
-            $this->ping($argument);
+            $this->warn($this->colorText('[Primary] ', ConsoleColor::White) . 'Not implemented yet');
 
         if ($options['complex'])
-            $this->ping($argument);
+            $this->warn($this->colorText('[Complex] ', ConsoleColor::White) . 'Not implemented yet');
 
     }
 

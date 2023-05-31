@@ -8,4 +8,6 @@ enum ConsoleColor: string
     case Green = 'green';
     case Blue = 'blue';
     case Yellow = 'yellow';
+
+    case White = 'white';
 }
